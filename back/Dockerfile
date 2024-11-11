@@ -1,8 +1,17 @@
-FROM python:3.11.9-slim
+# Базовый образ для Python
+FROM python:3.10-slim
 
-COPY requiremenst.txt requiremenst.txt
-RUN pip install -r requiremenst.txt
+# Установка рабочего каталога
+WORKDIR /app
 
-COPY . .
+# Копирование requirements.txt для установки зависимостей
+COPY requirements.txt /app/
 
-CMD ["uvicorn", "main:app", "--reload"]
+# Установка зависимостей
+RUN pip install -r requirements.txt
+
+# Копирование остальных файлов
+COPY . /app/
+
+# Запуск приложения
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
