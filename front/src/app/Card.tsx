@@ -15,7 +15,7 @@ export const Card: React.FC<Props> = ({num}) => {
     const [inf, setInf] = useState("loading...");
     
 
-    fetch("/api/ivent")
+    fetch("http://localhost:8000/ivent")
         .then(response => response.json())
         .then(data => {
             data = data.arr[num - 1]
