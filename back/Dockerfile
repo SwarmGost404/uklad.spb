@@ -5,7 +5,7 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Копирование requirements.txt для установки зависимостей
-COPY requirements.txt requirements.txt
+COPY COPY requirements.txt /app/
 
 # Установка зависимостей
 RUN pip install -r requirements.txt
