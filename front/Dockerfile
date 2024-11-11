@@ -9,7 +9,7 @@ COPY package.json ./package.json
 
 # Установка зависимостей
 RUN npm cache clean --force
-RUN npm instal
+RUN npm install
 
 # Копирование остальных файлов
 COPY . .
