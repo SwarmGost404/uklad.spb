@@ -1,23 +1,11 @@
-# Базовый образ для Node.js
 FROM node:lts-buster
-
-# Установка рабочего каталога
 WORKDIR /app
-
-# Копирование package.json для установки зависимостей
 COPY package.json ./package.json
-
-# Установка зависимостей
 RUN npm install
-
-# Копирование остальных файлов
 COPY . .
-
-# Сборка приложения
 RUN npm run build
-
-# Публикация портов
+FROM nginx:stable-alpine
+COPY --from=build /dist /usr/share/nginx/html
+COPY --from=build nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 3000
-
-# Запуск приложения
-ENTRYPOINT ["npm", "run", "start"]
+CMD [ "nginx", "-g", "daemon off;" ]
