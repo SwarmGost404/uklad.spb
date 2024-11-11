@@ -5,10 +5,11 @@ FROM node:lts-buster
 WORKDIR /app
 
 # Копирование package.json для установки зависимостей
-COPY package.json ./
+COPY package.json ./package.json
 
 # Установка зависимостей
-RUN npm install --verbose
+RUN npm cache clean --force
+RUN npm instal
 
 # Копирование остальных файлов
 COPY . .
