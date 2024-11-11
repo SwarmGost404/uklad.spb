@@ -1,101 +1,57 @@
-import Image from "next/image";
+import Link from "next/link";
+
+import {Card} from "./Card";
+import {LocalCard} from "./LocalCard";
+
+
+
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div id="root">
+      <header>
+        <Link href="/"><input id="logo" type="button" value="Уклад" /></Link>
+        <nav>
+          <a href="#ivent"><input type="button" value="Мероприятия" /></a>
+          <a href="#classes"><input type="button" value="Расписание" /></a>
+          <a href="#contact"><input type="button" value="Контакты" /></a>
+        </nav>
+      </header>
+      <main>
+        <div id="cover">
+          <h1>УКЛАД</h1>
+          <p>Добро пожаловать в нашу дружную семью!</p>
+        </div>
+        <div id="ann">
+          <article>
+            <h2>Фольклорный семейный клуб «Уклад» приглашает вас на свои занятия!</h2>
+            <p>У нас вы сможете познакомиться с русскими народными песнями, танцами и играми, научиться играть на народных музыкальных инструментах – балалайке, волынке, гуслях и гармошке. Сможете смастерить себе русский традиционный костюм – сарафан, рубашку или порты. Освоите разные виды традиционного рукоделия: народная кукла, лоскутное шитье, золотное шитье, украшения из бисера, познакомитесь с традиционной обрядовой кухней. Все занятия проходят в светлых и отлично оборудованных помещениях, некоторые из которых стилизованы под русский фольклор</p>
+          </article>
+        </div>
+        <div id="ivent">
+          <div className="backcard">
+            <Card num={1} />
+            <Card num={2} />
+            <Card num={3} />
+          </div>
+        </div>
+        <div id="classes">
+          <div id="cardclass">
+            <LocalCard date="Ветерочки" time="Каждый четверг" place="17:00-21:00" inf="От 14 лет до 35 лет" />
+            <LocalCard date="Традиционное рукоделие" time="Каждую среду" place="16:00-17:30" inf="Группа для взрослых" />
+            <LocalCard date="Традиционный костюм" time="Каждый четверг" place="16:00-20:00" inf="Группа для взрослых" />
+            <LocalCard date="Ветерки" time="Каждую среду" place="17:30-19:30" inf="от 7 до 11 лет" />
+          </div>
+        </div>
+        <div id="contact">
+          <h2>Хотите записаться на занятия</h2>
+          <p>Вы можете прийти в наш ПМК "Берёзка" по адресу ул. Шаумяна 31</p>
+          <Link target="_blank" href="https://yandex.ru/maps/org/podrostkovo_molodyozhny_klub_beryozka/1112826246/?ll=30.415231%2C59.931094&utm_source=share&z=16">
+            <input type="button" value="смотреть на карте" />
+          </Link>
+          <img src="/put.png" width={400} />
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
